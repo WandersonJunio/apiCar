@@ -7,9 +7,16 @@ interface ICategoryDTO {
 
 class CategoriesRipository {
   private categories: Category[];
+  private static INSTANCE: CategoriesRipository;
 
-  constructor () {
-    this.categories = [];
+  private constructor () { this.categories = [] }
+
+  public static getInstance(): CategoriesRipository {
+    if (!CategoriesRipository.INSTANCE) {
+      return new CategoriesRipository();
+    }
+
+    return CategoriesRipository.INSTANCE;
   }
 
   create({ description, name }: ICategoryDTO): void {
@@ -32,7 +39,7 @@ class CategoriesRipository {
     const category = this.categories.find((category) => {
       category.name === name;
     })
-category
+
     return category ? true : false;
   }
 }
