@@ -3,7 +3,7 @@ import { categoriesRoutes } from "./categories.routes";
 
 const router = Router();
 
-console.log("Entrei no middlware")
 router.use("/categories", categoriesRoutes);
+router.use("/category", categoriesRoutes);
 
 export default router;
